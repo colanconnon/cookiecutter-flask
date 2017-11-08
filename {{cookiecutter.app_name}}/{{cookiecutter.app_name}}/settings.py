@@ -21,14 +21,19 @@ class ProdConfig(Config):
 
     ENV = 'prod'
     DEBUG = False
-    MONGO_URI = 'localhost'
-
+    MONGODB_SETTINGS = {
+        'db': 'project1',
+        'host': 'mongodb://localhost/prod'
+    }
 
 class DevConfig(Config):
     """Development configuration."""
 
     ENV = 'dev'
-    MONGO_URI = 'localhost'
+    MONGODB_SETTINGS = {
+        'db': 'project1',
+        'host': 'mongodb://localhost/dev1'
+    }
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 
 
@@ -37,6 +42,9 @@ class TestConfig(Config):
 
     TESTING = True
     DEBUG = True
-    MONGO_URI = 'localhost'
+    MONGODB_SETTINGS = {
+        'db': 'project1',
+        'host': 'mongodb://localhost/test'
+    }
     BCRYPT_LOG_ROUNDS = 4  # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
     WTF_CSRF_ENABLED = False  # Allows form testing
