@@ -13,7 +13,6 @@ class Config(object):
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
     WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
 
 
@@ -22,20 +21,14 @@ class ProdConfig(Config):
 
     ENV = 'prod'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/example'  # TODO: Change me
-    DEBUG_TB_ENABLED = False  # Disable Debug toolbar
+    MONGO_URI = 'localhost'
 
 
 class DevConfig(Config):
     """Development configuration."""
 
     ENV = 'dev'
-    DEBUG = True
-    DB_NAME = 'dev.db'
-    # Put the db file in project root
-    DB_PATH = os.path.join(Config.PROJECT_ROOT, DB_NAME)
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///{0}'.format(DB_PATH)
-    DEBUG_TB_ENABLED = True
+    MONGO_URI = 'localhost'
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 
 
@@ -44,6 +37,6 @@ class TestConfig(Config):
 
     TESTING = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'
+    MONGO_URI = 'localhost'
     BCRYPT_LOG_ROUNDS = 4  # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
     WTF_CSRF_ENABLED = False  # Allows form testing

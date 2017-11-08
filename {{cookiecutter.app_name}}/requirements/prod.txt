@@ -35,3 +35,8 @@ Flask-Caching>=1.0.0
 
 # Debug toolbar
 Flask-DebugToolbar==0.10.1
+
+# Mongodb
+flask-mongoengine==0.9.3
+mongoengine==0.15.0
+pymongo==3.5.1
