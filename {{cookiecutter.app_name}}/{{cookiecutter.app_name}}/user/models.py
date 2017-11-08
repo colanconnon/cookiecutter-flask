@@ -8,16 +8,12 @@ from {{cookiecutter.app_name}}.extensions import bcrypt, db
 
 class Role(db.Document):
     """A role for a user."""
-
-    __tablename__ = 'roles'
     name = db.StringField(max_length=100, unique=True, required=True)
 
 
 
 class User(UserMixin, db.Document):
     """A user of the app."""
-
-    __tablename__ = 'users'
     username = db.StringField(150, unique=True, required=True)
     email = db.StringField(150, unique=True, required=True)
     password = db.BinaryField(128, required=True)
